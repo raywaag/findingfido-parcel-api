@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="/font-awesome.min.50690fe6.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="shortcut icon" href="#">
@@ -16,7 +17,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <title>PetFinder API</title>
-<script src="/pet-care.js"></script></head>
+<script src="/shelters.js"></script></head>
     <body>
       <nav class="navbar navbar-expand-lg navbar-dark toggled_navbar">
           <div class="container">
@@ -283,7 +284,34 @@
           </div>
         </div>
       </footer>
-      
-      <script src="/main.fb6bbcaf.js"></script>
+
+      <script>(function ($) {
+  'use strict';
+
+  $('.site-menu-toggle').click(function () {
+    var $this = $(this);
+
+    if ($('body').hasClass('menu-open')) {
+      $this.removeClass('open');
+      $('.js-site-navbar').fadeOut(400);
+      $('body').removeClass('menu-open');
+    } else {
+      $this.addClass('open');
+      $('.js-site-navbar').fadeIn(400);
+      $('body').addClass('menu-open');
+    }
+  });
+  $('nav .dropdown').hover(function () {
+    var $this = $(this);
+    $this.addClass('show');
+    $this.find('> a').attr('aria-expanded', true);
+    $this.find('.dropdown-menu').addClass('show');
+  }, function () {
+    var $this = $(this);
+    $this.removeClass('show');
+    $this.find('> a').attr('aria-expanded', false);
+    $this.find('.dropdown-menu').removeClass('show');
+  });
+});</script>
     </body>
   </html>

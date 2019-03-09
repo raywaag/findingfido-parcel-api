@@ -16,12 +16,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <title>PetFinder API</title>
-<script src="/font-awesome.min.50690fe6.js"></script><script src="/style.78032849.js"></script><script src="/index.js"></script></head>
+<script src="/pet-care.js"></script></head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark toggled_navbar">
         <div class="container">
             <a class="navbar-logo" href="/index.html"><span class="text-significant">Pet</span>Seeker</a>
-            <div class="site-menu-toggle js-site-menu-toggle  ml-auto">
+            <div class="site-menu-toggle js-site-menu-toggle  ml-auto" data-aos="fade" data-toggle="collapse" data-target="#hidden-navbar-nav" aria-controls="hidden-navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -197,7 +197,34 @@
           </div>
         </div>
       </footer>
-
       <script src="/main_shelter.44afcbfa.js"></script>
+      <script>(function ($) {
+  'use strict';
+
+  $('.site-menu-toggle').click(function () {
+    var $this = $(this);
+
+    if ($('body').hasClass('menu-open')) {
+      $this.removeClass('open');
+      $('.js-site-navbar').fadeOut(400);
+      $('body').removeClass('menu-open');
+    } else {
+      $this.addClass('open');
+      $('.js-site-navbar').fadeIn(400);
+      $('body').addClass('menu-open');
+    }
+  });
+  $('nav .dropdown').hover(function () {
+    var $this = $(this);
+    $this.addClass('show');
+    $this.find('> a').attr('aria-expanded', true);
+    $this.find('.dropdown-menu').addClass('show');
+  }, function () {
+    var $this = $(this);
+    $this.removeClass('show');
+    $this.find('> a').attr('aria-expanded', false);
+    $this.find('.dropdown-menu').removeClass('show');
+  });
+});</script>
     </body>
   </html>

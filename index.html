@@ -17,27 +17,27 @@
 
     <title>PetFinder API</title>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark toggled_navbar">
-            <div class="container">
-                <a class="navbar-logo" href="index.html"><span class="text-significant">Pet</span>Seeker</a>
-                <div class="site-menu-toggle js-site-menu-toggle  ml-auto">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    </div>
-        
-                <div class="collapse navbar-collapse" id="hidden-navbar-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="shelters.html">Shelters</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pet-care.html">Pet Care</a></li>
-                    <li class="nav-item btn-nav ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a class="nav-link" href="index.html"><span class="toggled_rounded-4 px-4 rounded">ADOPT</span></a></li>
-                </ul>
-                </div>
-            </div>
-            </nav>
-            <!-- END nav -->
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-dark toggled_navbar">
+          <div class="container">
+              <a class="navbar-logo" href="index.html"><span class="text-significant">Pet</span>Seeker</a>
+              <div class="site-menu-toggle js-site-menu-toggle  ml-auto"  data-aos="fade" data-toggle="collapse" data-target="#hidden-navbar-nav" aria-controls="hidden-navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  </div>
+      
+              <div class="collapse navbar-collapse" id="hidden-navbar-nav">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                  <li class="nav-item"><a class="nav-link" href="shelters.html">Shelters</a></li>
+                  <li class="nav-item"><a class="nav-link" href="pet-care.html">Pet Care</a></li>
+                  <li class="nav-item btn-nav ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a class="nav-link" href="index.html"><span class="toggled_rounded-4 px-4 rounded">ADOPT</span></a></li>
+              </ul>
+              </div>
+          </div>
+          </nav>
+          <!-- END nav -->
           
         <section class="site-hero overlay" style="background-image: url(images/hero-image.jpg)" id="section-home">
             <div class="container">
@@ -249,7 +249,35 @@
     </div>
     </div>
 </footer>
-
     <script src="js/main.js"></script>
+    <script>
+        (function($) {
+            'use strict';
+                $('.site-menu-toggle').click(function(){
+                    var $this = $(this);
+                    if ( $('body').hasClass('menu-open') ) {
+                    $this.removeClass('open');
+                    $('.js-site-navbar').fadeOut(400);
+                    $('body').removeClass('menu-open');
+                    } else {
+                    $this.addClass('open');
+                    $('.js-site-navbar').fadeIn(400);
+                    $('body').addClass('menu-open');
+                }
+            });
+
+            $('nav .dropdown').hover(function(){
+                var $this = $(this);
+                $this.addClass('show');
+                $this.find('> a').attr('aria-expanded', true);
+                $this.find('.dropdown-menu').addClass('show');
+            }, function(){
+                var $this = $(this);
+                    $this.removeClass('show');
+                    $this.find('> a').attr('aria-expanded', false);
+                    $this.find('.dropdown-menu').removeClass('show');
+            })
+        });
+    </script>
 </body>
 </html>
