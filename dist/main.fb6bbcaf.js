@@ -313,8 +313,18 @@ function fetchAnimals(e) {
 // function callback(data) {
 //   console.log(data);
 // }
-// Show Listings Of Pets
+// Fetch Animals From API
 
+
+function getDog() {
+  $.getJSON("https://dog.ceo/api/breeds/image/random", function (data) {
+    $(".image-content").html("<img src='" + data.message + "'>");
+  });
+}
+
+$('.get-dog').click(function () {
+  getDog();
+}); // Show Listings Of Pets
 
 function showAnimals(pets) {
   var results = document.querySelector('#results'); // Clear First
@@ -325,7 +335,8 @@ function showAnimals(pets) {
     console.log(pet);
     var div = document.createElement('div');
     div.classList.add('card', 'card-body', 'mb-3');
-    div.innerHTML = "\n      <div class=\"row\">\n        <div class=\"col-sm-6\">\n          <h4>".concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n          <p class=\"text-secondary\">").concat(pet.breeds.breed.$t, "</p>\n          <p>").concat(pet.contact.address1.$t, " ").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</p>\n\n        </div>\n      </div>\n    ");
+    div.innerHTML = "\n      <div class=\"row\">\n        <div class=\"col-md-6\">\n          <h4>".concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n          <p class=\"text-secondary\">").concat(pet.breeds.breed.$t, "</p>\n          <p>").concat(pet.contact.address1.$t, " ").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</p>\n        </div>\n      </div>\n      <div style=\"max-width:100%;height:auto;overflow:hidden;\" class=\"col-md-6 image-content\">\n    ") + getDog();
+    "</div>";
     results.appendChild(div);
   });
 }
@@ -359,7 +370,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52899" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63245" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

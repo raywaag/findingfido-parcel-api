@@ -38,6 +38,18 @@ function fetchAnimals(e) {
 //   console.log(data);
 // }
 
+
+// Fetch Animals From API
+function getDog(){
+  $.getJSON("https://dog.ceo/api/breeds/image/random", function( data ) {
+      $(".image-content").html("<img src='" + data.message + "'>");
+  });
+}
+$('.get-dog').click(function(){
+  getDog();
+});
+
+
 // Show Listings Of Pets
 function showAnimals(pets) {
   const results = document.querySelector('#results');
@@ -50,16 +62,17 @@ function showAnimals(pets) {
     div.classList.add('card', 'card-body', 'mb-3');
     div.innerHTML = `
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <h4>${pet.name.$t} (${pet.age.$t})</h4>
           <p class="text-secondary">${pet.breeds.breed.$t}</p>
           <p>${pet.contact.address1.$t} ${pet.contact.city.$t} ${
-      pet.contact.state.$t
-    } ${pet.contact.zip.$t}</p>
-
+            pet.contact.state.$t
+          } ${pet.contact.zip.$t}</p>
         </div>
       </div>
-    `;
+      <div style="max-width:100%;height:auto;overflow:hidden;" class="col-md-6 image-content">
+    ` + getDog();
+    `</div>`;
 
     results.appendChild(div);
   });
