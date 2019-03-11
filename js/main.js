@@ -45,10 +45,14 @@ function getDog(){
       $(".image-content").html("<img src='" + data.message + "'>");
   });
 }
-$('.get-dog').click(function(){
-  getDog();
-});
 
+// Loader
+$(document).ajaxStart(function(){
+  $("#wait").css("display", "block");
+});
+$(document).ajaxComplete(function(){
+  $("#wait").css("display", "none");
+});
 
 // Show Listings Of Pets
 function showAnimals(pets) {
@@ -61,16 +65,17 @@ function showAnimals(pets) {
     const div = document.createElement('div');
     div.classList.add('card', 'card-body', 'mb-3');
     div.innerHTML = `
-      <div class="row">
-        <div class="col-md-6">
+      <div class="col-md-12">
+        <div>
           <h4>${pet.name.$t} (${pet.age.$t})</h4>
           <p class="text-secondary">${pet.breeds.breed.$t}</p>
           <p>${pet.contact.address1.$t} ${pet.contact.city.$t} ${
             pet.contact.state.$t
           } ${pet.contact.zip.$t}</p>
         </div>
+      <div  class="image-content" style="width:auto;height:100%;overflow:hidden;">
+      <div class="spinner-border" role="status">
       </div>
-      <div style="max-width:100%;height:auto;overflow:hidden;" class="col-md-6 image-content">
     ` + getDog();
     `</div>`;
 

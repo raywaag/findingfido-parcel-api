@@ -1,207 +1,206 @@
 {
-  "name": "petfinder-API",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "fetch-jsonp": "^1.1.3"
-  },
-  "devDependencies": {
-    "parcel-plugin-clean-dist": "0.0.6"
-  },
-  "status": "success",
-  "message": {
-      "affenpinscher": [],
-      "african": [],
-      "airedale": [],
-      "akita": [],
-      "appenzeller": [],
-      "basenji": [],
-      "beagle": [],
-      "bluetick": [],
-      "borzoi": [],
-      "bouvier": [],
-      "boxer": [],
-      "brabancon": [],
-      "briard": [],
-      "bulldog": [
-          "boston",
-          "french"
-      ],
-      "bullterrier": [
-          "staffordshire"
-      ],
-      "cairn": [],
-      "cattledog": [
-          "australian"
-      ],
-      "chihuahua": [],
-      "chow": [],
-      "clumber": [],
-      "cockapoo": [],
-      "collie": [
-          "border"
-      ],
-      "coonhound": [],
-      "corgi": [
-          "cardigan"
-      ],
-      "cotondetulear": [],
-      "dachshund": [],
-      "dalmatian": [],
-      "dane": [
-          "great"
-      ],
-      "deerhound": [
-          "scottish"
-      ],
-      "dhole": [],
-      "dingo": [],
-      "doberman": [],
-      "elkhound": [
-          "norwegian"
-      ],
-      "entlebucher": [],
-      "eskimo": [],
-      "frise": [
-          "bichon"
-      ],
-      "germanshepherd": [],
-      "greyhound": [
-          "italian"
-      ],
-      "groenendael": [],
-      "hound": [
-          "afghan",
-          "basset",
-          "blood",
-          "english",
-          "ibizan",
-          "walker"
-      ],
-      "husky": [],
-      "keeshond": [],
-      "kelpie": [],
-      "komondor": [],
-      "kuvasz": [],
-      "labrador": [],
-      "leonberg": [],
-      "lhasa": [],
-      "malamute": [],
-      "malinois": [],
-      "maltese": [],
-      "mastiff": [
-          "bull",
-          "english",
-          "tibetan"
-      ],
-      "mexicanhairless": [],
-      "mix": [],
-      "mountain": [
-          "bernese",
-          "swiss"
-      ],
-      "newfoundland": [],
-      "otterhound": [],
-      "papillon": [],
-      "pekinese": [],
-      "pembroke": [],
-      "pinscher": [
-          "miniature"
-      ],
-      "pointer": [
-          "german",
-          "germanlonghair"
-      ],
-      "pomeranian": [],
-      "poodle": [
-          "miniature",
-          "standard",
-          "toy"
-      ],
-      "pug": [],
-      "puggle": [],
-      "pyrenees": [],
-      "redbone": [],
-      "retriever": [
-          "chesapeake",
-          "curly",
-          "flatcoated",
-          "golden"
-      ],
-      "ridgeback": [
-          "rhodesian"
-      ],
-      "rottweiler": [],
-      "saluki": [],
-      "samoyed": [],
-      "schipperke": [],
-      "schnauzer": [
-          "giant",
-          "miniature"
-      ],
-      "setter": [
-          "english",
-          "gordon",
-          "irish"
-      ],
-      "sheepdog": [
-          "english",
-          "shetland"
-      ],
-      "shiba": [],
-      "shihtzu": [],
-      "spaniel": [
-          "blenheim",
-          "brittany",
-          "cocker",
-          "irish",
-          "japanese",
-          "sussex",
-          "welsh"
-      ],
-      "springer": [
-          "english"
-      ],
-      "stbernard": [],
-      "terrier": [
-          "american",
-          "australian",
-          "bedlington",
-          "border",
-          "dandie",
-          "fox",
-          "irish",
-          "kerryblue",
-          "lakeland",
-          "norfolk",
-          "norwich",
-          "patterdale",
-          "russell",
-          "scottish",
-          "sealyham",
-          "silky",
-          "tibetan",
-          "toy",
-          "westhighland",
-          "wheaten",
-          "yorkshire"
-      ],
-      "vizsla": [],
-      "weimaraner": [],
-      "whippet": [],
-      "wolfhound": [
-          "irish"
-      ]
-  }
+    "name": "petfinder-API",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "babel-core": "^6.26.3",
+        "babel-preset-env": "^1.7.0",
+        "fetch-jsonp": "^1.1.3",
+        "parcel-bundler": "^1.12.0"
+    },
+    "devDependencies": {
+        "parcel-plugin-clean-dist": "0.0.6"
+    },
+    "status": "success",
+    "message": {
+        "affenpinscher": [],
+        "african": [],
+        "airedale": [],
+        "akita": [],
+        "appenzeller": [],
+        "basenji": [],
+        "beagle": [],
+        "bluetick": [],
+        "borzoi": [],
+        "bouvier": [],
+        "boxer": [],
+        "brabancon": [],
+        "briard": [],
+        "bulldog": [
+            "boston",
+            "french"
+        ],
+        "bullterrier": [
+            "staffordshire"
+        ],
+        "cairn": [],
+        "cattledog": [
+            "australian"
+        ],
+        "chihuahua": [],
+        "chow": [],
+        "clumber": [],
+        "cockapoo": [],
+        "collie": [
+            "border"
+        ],
+        "coonhound": [],
+        "corgi": [
+            "cardigan"
+        ],
+        "cotondetulear": [],
+        "dachshund": [],
+        "dalmatian": [],
+        "dane": [
+            "great"
+        ],
+        "deerhound": [
+            "scottish"
+        ],
+        "dhole": [],
+        "dingo": [],
+        "doberman": [],
+        "elkhound": [
+            "norwegian"
+        ],
+        "entlebucher": [],
+        "eskimo": [],
+        "frise": [
+            "bichon"
+        ],
+        "germanshepherd": [],
+        "greyhound": [
+            "italian"
+        ],
+        "groenendael": [],
+        "hound": [
+            "afghan",
+            "basset",
+            "blood",
+            "english",
+            "ibizan",
+            "walker"
+        ],
+        "husky": [],
+        "keeshond": [],
+        "kelpie": [],
+        "komondor": [],
+        "kuvasz": [],
+        "labrador": [],
+        "leonberg": [],
+        "lhasa": [],
+        "malamute": [],
+        "malinois": [],
+        "maltese": [],
+        "mastiff": [
+            "bull",
+            "english",
+            "tibetan"
+        ],
+        "mexicanhairless": [],
+        "mix": [],
+        "mountain": [
+            "bernese",
+            "swiss"
+        ],
+        "newfoundland": [],
+        "otterhound": [],
+        "papillon": [],
+        "pekinese": [],
+        "pembroke": [],
+        "pinscher": [
+            "miniature"
+        ],
+        "pointer": [
+            "german",
+            "germanlonghair"
+        ],
+        "pomeranian": [],
+        "poodle": [
+            "miniature",
+            "standard",
+            "toy"
+        ],
+        "pug": [],
+        "puggle": [],
+        "pyrenees": [],
+        "redbone": [],
+        "retriever": [
+            "chesapeake",
+            "curly",
+            "flatcoated",
+            "golden"
+        ],
+        "ridgeback": [
+            "rhodesian"
+        ],
+        "rottweiler": [],
+        "saluki": [],
+        "samoyed": [],
+        "schipperke": [],
+        "schnauzer": [
+            "giant",
+            "miniature"
+        ],
+        "setter": [
+            "english",
+            "gordon",
+            "irish"
+        ],
+        "sheepdog": [
+            "english",
+            "shetland"
+        ],
+        "shiba": [],
+        "shihtzu": [],
+        "spaniel": [
+            "blenheim",
+            "brittany",
+            "cocker",
+            "irish",
+            "japanese",
+            "sussex",
+            "welsh"
+        ],
+        "springer": [
+            "english"
+        ],
+        "stbernard": [],
+        "terrier": [
+            "american",
+            "australian",
+            "bedlington",
+            "border",
+            "dandie",
+            "fox",
+            "irish",
+            "kerryblue",
+            "lakeland",
+            "norfolk",
+            "norwich",
+            "patterdale",
+            "russell",
+            "scottish",
+            "sealyham",
+            "silky",
+            "tibetan",
+            "toy",
+            "westhighland",
+            "wheaten",
+            "yorkshire"
+        ],
+        "vizsla": [],
+        "weimaraner": [],
+        "whippet": [],
+        "wolfhound": [
+            "irish"
+        ]
+    }
 }
-
-

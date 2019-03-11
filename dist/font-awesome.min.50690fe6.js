@@ -122,7 +122,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./../fonts/fontawesome-webfont.eot":[["fontawesome-webfont.dcd68111.eot","fonts/fontawesome/fonts/fontawesome-webfont.eot"],"fonts/fontawesome/fonts/fontawesome-webfont.eot"],"./../fonts/fontawesome-webfont.woff2":[["fontawesome-webfont.ed022038.woff2","fonts/fontawesome/fonts/fontawesome-webfont.woff2"],"fonts/fontawesome/fonts/fontawesome-webfont.woff2"],"./../fonts/fontawesome-webfont.woff":[["fontawesome-webfont.9e1aeec1.woff","fonts/fontawesome/fonts/fontawesome-webfont.woff"],"fonts/fontawesome/fonts/fontawesome-webfont.woff"],"./../fonts/fontawesome-webfont.ttf":[["fontawesome-webfont.2062aaf6.ttf","fonts/fontawesome/fonts/fontawesome-webfont.ttf"],"fonts/fontawesome/fonts/fontawesome-webfont.ttf"],"./../fonts/fontawesome-webfont.svg":[["fontawesome-webfont.25f50e18.svg","fonts/fontawesome/fonts/fontawesome-webfont.svg"],"fonts/fontawesome/fonts/fontawesome-webfont.svg"],"_css_loader":"../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./../fonts/fontawesome-webfont.eot":[["fontawesome-webfont.dcd68111.eot","fonts/fontawesome/fonts/fontawesome-webfont.eot"],"fonts/fontawesome/fonts/fontawesome-webfont.eot"],"./../fonts/fontawesome-webfont.woff2":[["fontawesome-webfont.ed022038.woff2","fonts/fontawesome/fonts/fontawesome-webfont.woff2"],"fonts/fontawesome/fonts/fontawesome-webfont.woff2"],"./../fonts/fontawesome-webfont.woff":[["fontawesome-webfont.9e1aeec1.woff","fonts/fontawesome/fonts/fontawesome-webfont.woff"],"fonts/fontawesome/fonts/fontawesome-webfont.woff"],"./../fonts/fontawesome-webfont.ttf":[["fontawesome-webfont.2062aaf6.ttf","fonts/fontawesome/fonts/fontawesome-webfont.ttf"],"fonts/fontawesome/fonts/fontawesome-webfont.ttf"],"./../fonts/fontawesome-webfont.svg":[["fontawesome-webfont.25f50e18.svg","fonts/fontawesome/fonts/fontawesome-webfont.svg"],"fonts/fontawesome/fonts/fontawesome-webfont.svg"],"_css_loader":"../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -150,7 +150,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63245" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60993" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -325,7 +325,7 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}],"../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{}],"../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -357,7 +357,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
+},{}],"../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/bundle-loader.js":[function(require,module,exports) {
 var getBundleURL = require('./bundle-url').getBundleURL;
 
 function loadBundlesLazy(bundles) {
@@ -440,7 +440,7 @@ LazyPromise.prototype.catch = function (onError) {
   if (this.promise === null) this.promise = new Promise(this.executor);
   return this.promise.catch(onError);
 };
-},{"./bundle-url":"../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js":[function(require,module,exports) {
+},{"./bundle-url":"../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js":[function(require,module,exports) {
 module.exports = function loadJSBundle(bundle) {
   return new Promise(function (resolve, reject) {
     var script = document.createElement('script');
@@ -463,6 +463,6 @@ module.exports = function loadJSBundle(bundle) {
   });
 };
 },{}],0:[function(require,module,exports) {
-var b=require("../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.register("js",require("../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js"));b.load([]);
-},{}]},{},["../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0], null)
+var b=require("../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/bundle-loader.js");b.register("js",require("../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/loaders/browser/js-loader.js"));b.load([]);
+},{}]},{},["../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js",0], null)
 //# sourceMappingURL=/font-awesome.min.50690fe6.js.map

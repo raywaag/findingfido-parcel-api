@@ -320,10 +320,14 @@ function getDog() {
   $.getJSON("https://dog.ceo/api/breeds/image/random", function (data) {
     $(".image-content").html("<img src='" + data.message + "'>");
   });
-}
+} // Loader
 
-$('.get-dog').click(function () {
-  getDog();
+
+$(document).ajaxStart(function () {
+  $("#wait").css("display", "block");
+});
+$(document).ajaxComplete(function () {
+  $("#wait").css("display", "none");
 }); // Show Listings Of Pets
 
 function showAnimals(pets) {
@@ -335,14 +339,14 @@ function showAnimals(pets) {
     console.log(pet);
     var div = document.createElement('div');
     div.classList.add('card', 'card-body', 'mb-3');
-    div.innerHTML = "\n      <div class=\"row\">\n        <div class=\"col-md-6\">\n          <h4>".concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n          <p class=\"text-secondary\">").concat(pet.breeds.breed.$t, "</p>\n          <p>").concat(pet.contact.address1.$t, " ").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</p>\n        </div>\n      </div>\n      <div style=\"max-width:100%;height:auto;overflow:hidden;\" class=\"col-md-6 image-content\">\n    ") + getDog();
+    div.innerHTML = "\n      <div class=\"col-md-12\">\n        <div>\n          <h4>".concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n          <p class=\"text-secondary\">").concat(pet.breeds.breed.$t, "</p>\n          <p>").concat(pet.contact.address1.$t, " ").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</p>\n        </div>\n      <div  class=\"image-content\" style=\"width:auto;height:100%;overflow:hidden;\">\n      <div class=\"spinner-border\" role=\"status\">\n      </div>\n    ") + getDog();
     "</div>";
     results.appendChild(div);
   });
 }
 
 ;
-},{"fetch-jsonp":"node_modules/fetch-jsonp/build/fetch-jsonp.js","./validate":"js/validate.js"}],"../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"fetch-jsonp":"node_modules/fetch-jsonp/build/fetch-jsonp.js","./validate":"js/validate.js"}],"../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -370,7 +374,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63245" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60993" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -545,5 +549,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/main.js"], null)
+},{}]},{},["../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/main.js"], null)
 //# sourceMappingURL=/main.fb6bbcaf.js.map
