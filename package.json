@@ -4,7 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "parcel index.html",
+        "predeploy": "rm -rf dist && parcel build index.html --public-url petseeker-parcel-api",
+        "deploy": "gh-pages -d dist"
     },
     "keywords": [],
     "author": "",
@@ -16,6 +19,7 @@
         "parcel-bundler": "^1.12.0"
     },
     "devDependencies": {
+        "gh-pages": "^2.0.1",
         "parcel-plugin-clean-dist": "0.0.6"
     },
     "status": "success",
