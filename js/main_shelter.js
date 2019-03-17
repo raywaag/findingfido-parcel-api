@@ -22,7 +22,7 @@ function fetchShelters(e) {
 
   // Fetch Pets
   fetchJsonp(
-    `http://api.petfinder.com/shelter.find?format=json&key=e40853af36fc035106f99b51669391bb&name=${name}&location=${zip}&callback=callback`,
+    `https://api.petfinder.com/shelter.find?format=json&key=e40853af36fc035106f99b51669391bb&name=${name}&location=${zip}&callback=callback`,
     {
       jsonpCallbackFunction: 'callback'
     }
