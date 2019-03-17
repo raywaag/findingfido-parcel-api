@@ -37,6 +37,22 @@ function fetchShelters(e) {
 //   console.log(data);
 // }
 
+  // Fetch Animals From API
+  function getDog(){
+    $.getJSON("https://dog.ceo/api/breeds/image/random", function( data ) {
+        $(".image-content").html("<img src='" + data.message + "'>");
+    });
+  }
+  
+  // Loader
+  $(document).ajaxStart(function(){
+    $("#wait").css("display", "block");
+  });
+  $(document).ajaxComplete(function(){
+    $("#wait").css("display", "none");
+  });
+
+
 // Show Listings Of Pets
 function showShelters(shelters) {
   const results = document.querySelector('#results');
@@ -51,13 +67,16 @@ function showShelters(shelters) {
       <div class="row">
         <div class="col-sm-6">
           <h4>${shelter.name.$t}</h4>
-          <p>${shelter.address1.$t} ${shelter.city.$t} ${
-            shelter.state.$t
-    } ${shelter.phone.$t}</p>
-
+          <p>
+            ${shelter.city.$t}
+            ${shelter.state.$t} ${shelter.phone.$t}
+           </p>
         </div>
-      </div>
-    `;
+        </div>
+        <div  class="image-content" style="width:auto;height:100%;overflow:hidden;">
+        <div class="spinner-border" role="status"></div>
+    ` + getDog();
+    `</div>`;
 
     results.appendChild(div);
   });

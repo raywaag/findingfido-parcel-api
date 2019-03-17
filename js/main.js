@@ -33,26 +33,6 @@ function fetchAnimals(e) {
     .catch(err => console.log(err));
 }
 
-// // JSONP Callback
-// function callback(data) {
-//   console.log(data);
-// }
-
-
-// Fetch Animals From API
-function getDog(){
-  $.getJSON("https://dog.ceo/api/breeds/image/random", function( data ) {
-      $(".image-content").html("<img src='" + data.message + "'>");
-  });
-}
-
-// Loader
-$(document).ajaxStart(function(){
-  $("#wait").css("display", "block");
-});
-$(document).ajaxComplete(function(){
-  $("#wait").css("display", "none");
-});
 
 // Show Listings Of Pets
 function showAnimals(pets) {
@@ -69,15 +49,14 @@ function showAnimals(pets) {
         <div>
           <h4>${pet.name.$t} (${pet.age.$t})</h4>
           <p class="text-secondary">${pet.breeds.breed.$t}</p>
-          <p>${pet.contact.address1.$t} ${pet.contact.city.$t} ${
+          <p>${pet.contact.city.$t} ${
             pet.contact.state.$t
           } ${pet.contact.zip.$t}</p>
         </div>
-      <div  class="image-content" style="width:auto;height:100%;overflow:hidden;">
-      <div class="spinner-border" role="status">
-      </div>
-    ` + getDog();
-    `</div>`;
+        <div class="col-sm-6">
+          <img class="img-fluid" src="${pet.media.photos.photo[3].$t}">
+        </div>
+      </div>`;
 
     results.appendChild(div);
   });

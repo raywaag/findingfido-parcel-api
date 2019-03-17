@@ -312,8 +312,22 @@ function fetchShelters(e) {
 // function callback(data) {
 //   console.log(data);
 // }
-// Show Listings Of Pets
+// Fetch Animals From API
 
+
+function getDog() {
+  $.getJSON("https://dog.ceo/api/breeds/image/random", function (data) {
+    $(".image-content").html("<img src='" + data.message + "'>");
+  });
+} // Loader
+
+
+$(document).ajaxStart(function () {
+  $("#wait").css("display", "block");
+});
+$(document).ajaxComplete(function () {
+  $("#wait").css("display", "none");
+}); // Show Listings Of Pets
 
 function showShelters(shelters) {
   var results = document.querySelector('#results'); // Clear First
@@ -324,7 +338,8 @@ function showShelters(shelters) {
     console.log(shelter);
     var div = document.createElement('div');
     div.classList.add('card', 'card-body', 'mb-3');
-    div.innerHTML = "\n      <div class=\"row\">\n        <div class=\"col-sm-6\">\n          <h4>".concat(shelter.name.$t, "</h4>\n          <p>").concat(shelter.address1.$t, " ").concat(shelter.city.$t, " ").concat(shelter.state.$t, " ").concat(shelter.phone.$t, "</p>\n\n        </div>\n      </div>\n    ");
+    div.innerHTML = "\n      <div class=\"row\">\n        <div class=\"col-sm-6\">\n          <h4>".concat(shelter.name.$t, "</h4>\n          <p>\n            ").concat(shelter.city.$t, "\n            ").concat(shelter.state.$t, " ").concat(shelter.phone.$t, "\n           </p>\n        </div>\n        </div>\n        <div  class=\"image-content\" style=\"width:auto;height:100%;overflow:hidden;\">\n        <div class=\"spinner-border\" role=\"status\"></div>\n    ") + getDog();
+    "</div>";
     results.appendChild(div);
   });
 }

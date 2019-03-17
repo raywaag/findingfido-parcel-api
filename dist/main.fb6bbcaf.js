@@ -309,26 +309,8 @@ function fetchAnimals(e) {
   }).catch(function (err) {
     return console.log(err);
   });
-} // // JSONP Callback
-// function callback(data) {
-//   console.log(data);
-// }
-// Fetch Animals From API
+} // Show Listings Of Pets
 
-
-function getDog() {
-  $.getJSON("https://dog.ceo/api/breeds/image/random", function (data) {
-    $(".image-content").html("<img src='" + data.message + "'>");
-  });
-} // Loader
-
-
-$(document).ajaxStart(function () {
-  $("#wait").css("display", "block");
-});
-$(document).ajaxComplete(function () {
-  $("#wait").css("display", "none");
-}); // Show Listings Of Pets
 
 function showAnimals(pets) {
   var results = document.querySelector('#results'); // Clear First
@@ -339,8 +321,7 @@ function showAnimals(pets) {
     console.log(pet);
     var div = document.createElement('div');
     div.classList.add('card', 'card-body', 'mb-3');
-    div.innerHTML = "\n      <div class=\"col-md-12\">\n        <div>\n          <h4>".concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n          <p class=\"text-secondary\">").concat(pet.breeds.breed.$t, "</p>\n          <p>").concat(pet.contact.address1.$t, " ").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</p>\n        </div>\n      <div  class=\"image-content\" style=\"width:auto;height:100%;overflow:hidden;\">\n      <div class=\"spinner-border\" role=\"status\">\n      </div>\n    ") + getDog();
-    "</div>";
+    div.innerHTML = "\n      <div class=\"col-md-12\">\n        <div>\n          <h4>".concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n          <p class=\"text-secondary\">").concat(pet.breeds.breed.$t, "</p>\n          <p>").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</p>\n        </div>\n        <div class=\"col-sm-6\">\n          <img class=\"img-fluid\" src=\"").concat(pet.media.photos.photo[3].$t, "\">\n        </div>\n      </div>");
     results.appendChild(div);
   });
 }
