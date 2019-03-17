@@ -54,7 +54,7 @@ function showAnimals(pets) {
           } ${pet.contact.zip.$t}</p>
         </div>
         <div class="col-sm-6">
-          <img class="img-fluid" src="${pet.media.photos.photo[3].$t}">
+          <a target="_blank" href="https://www.petfinder.com/petdetail/ + ${pet.id.$t}"><img class="img-fluid" src="${pet.media.photos.photo[3].$t}"></a>
         </div>
       </div>`;
 

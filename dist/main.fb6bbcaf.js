@@ -321,7 +321,7 @@ function showAnimals(pets) {
     console.log(pet);
     var div = document.createElement('div');
     div.classList.add('card', 'card-body', 'mb-3');
-    div.innerHTML = "\n      <div class=\"col-md-12\">\n        <div>\n          <h4>".concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n          <p class=\"text-secondary\">").concat(pet.breeds.breed.$t, "</p>\n          <p>").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</p>\n        </div>\n        <div class=\"col-sm-6\">\n          <img class=\"img-fluid\" src=\"").concat(pet.media.photos.photo[3].$t, "\">\n        </div>\n      </div>");
+    div.innerHTML = "\n      <div class=\"col-md-12\">\n        <div>\n          <h4>".concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n          <p class=\"text-secondary\">").concat(pet.breeds.breed.$t, "</p>\n          <p>").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</p>\n        </div>\n        <div class=\"col-sm-6\">\n          <a target=\"_blank\" href=\"https://www.petfinder.com/petdetail/ + ").concat(pet.id.$t, "\"><img class=\"img-fluid\" src=\"").concat(pet.media.photos.photo[3].$t, "\"></a>\n        </div>\n      </div>");
     results.appendChild(div);
   });
 }
