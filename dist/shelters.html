@@ -8,20 +8,20 @@
     <link rel="stylesheet" href="/font-awesome.min.50690fe6.css">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="shortcut icon" href="#">
+
     <link rel="stylesheet" href="/style.78032849.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <title>PetFinder API</title>
 <script src="/pet-care.js"></script></head>
 <body>
+    <!-- NAVIGATION --> 
     <nav class="navbar navbar-expand-lg navbar-dark toggled_navbar">
         <div class="container">
             <a class="navbar-logo" href="/index.html"><span class="text-significant">Pet</span>Seeker</a>
-            <div class="site-menu-toggle js-site-menu-toggle  ml-auto" data-aos="fade" data-toggle="collapse" data-target="#hidden-navbar-nav" aria-controls="hidden-navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="site-menu-toggle js-site-menu-toggle  ml-auto" data-toggle="collapse" data-target="#hidden-navbar-nav" aria-controls="hidden-navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -37,168 +37,187 @@
             </div>
         </div>
         </nav>
-        <!-- END nav -->
+        <!-- END NAV -->
 
-      <section class="site-hero overlay" style="background-image: url(rescue_hero.025e6ddb.jpg)" id="section-home">
-        <div class="container">
-          <div class="row site-hero-inner justify-content-center align-items-center">
-            <div class="col-md-10 text-center" data-aos="fade-up">
-              <h1 class="heading">The true heroes.</h1>
-            </div>
+    <!-- MAST --> 
+    <section class="site-hero overlay" style="background-image: url(rescue_hero.025e6ddb.jpg)">
+      <div class="container">
+        <div class="row site-hero-inner justify-content-center align-items-center">
+          <div class="col-md-10 text-center">
+            <h1 class="heading">The true heroes.</h1>
           </div>
         </div>
-      </section>
-      <!-- END section -->
+      </div>
+    </section>
+    <!-- END MAST -->
 
-      <section class="section toggled-0" style="padding:30px;">
-          <div class="container" id="adopt-form">
-            <div class="row find-pet" id="next">
-              <div class="block-32">
+    <!-- FIND SHELTERS --> 
+    <section class="section toggled-0" style="padding:30px;">
+        <div class="container" id="adopt-form">
+          <div class="row find-pet" id="next">
+            <div class="block-32">
+
+                    <form id="shelter-form">
+                        <div class="row">
+
+                        <!-- ZIPCODE INPUT --> 
+                        <div class="col-md-4 mb-3 mb-lg-0 col-lg-3">
+                            <label class="font-weight-bold text-dark">Where are you looking?</label>
+                            <div class="field-icon-wrap">
+                            <input id="zip" type="text" class="form-control" placeholder="Enter your zipcode">
+                            </div>
+                        </div>
+
+                        <!-- SHELTER NAME INPUT --> 
+                        <div class="col-md-4 mb-3 mb-md-0">
+                          <label class="font-weight-bold text-dark">Shelter Name</label>
+                            <div class="field-icon-wrap">
+                          <input id="name" type="text" class="form-control" placeholder="Optional">
+                          </div>
+                        </div>
+
+                        <!-- API ACTIVATION --> 
+                        <div class="col-md-4 col-lg-2 align-self-end">
+                            <input type="submit" value="FIND" class="btn btn-primary btn-block text-white">
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END FIND SHELTERS --> 
   
-                      <form id="shelter-form">
-                          <div class="row">
-                          <div class="col-md-4 mb-3 mb-lg-0 col-lg-3">
-                              <label class="font-weight-bold text-dark">Where are you looking?</label>
-                              <div class="field-icon-wrap">
-                              <input id="zip" type="text" class="form-control" placeholder="Enter your zipcode">
-                              </div>
-                          </div>
-                          <div class="col-md-4 mb-3 mb-md-0">
-                            <label class="font-weight-bold text-dark">Shelter Name</label>
-                              <div class="field-icon-wrap">
-                            <input id="name" type="text" class="form-control" placeholder="Optional">
-                           </div>
-                         </div>
-                          <div class="col-md-4 col-lg-2 align-self-end">
-                              <input type="submit" value="FIND" class="btn btn-primary btn-block text-white">
-                          </div>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </section>
-  
-      <section style="padding:5vh;">
-          <div class="row">
-          <div class="col-md-12 mb-3 mb-md-0" id="results"></div>
-          </div>
-      </section>
-      
-      <section class="bg-light about">
-        <div class="container section" id="section-adop-near">
-            <h2 class="heading" data-aos="fade-up">Start your own organization</h2>
+    <!-- SHELTER API RESULTS --> 
+    <section style="padding:5vh;">
         <div class="row">
-          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <p>
-              <span>A Shelter</span><br>
-              <a href="http://www.aspca.org/">ASPCA's National Shelter Outreach</a> has great tips to help you get started!
-            </p>
-            <ul>
-              <li>
-                Ensure there is a gap in community needs. Determine issues in the local animal welfare industry and what goals are being failed to reach. 
-                Would your organization be successful? Would it benefit your community? If there are more than one shelter in your community, would adding another one be an advantage or 
-                disadvantage in your community?
-              </li>
-              <li>
-                Do your research and <i>know exactly</i> what you're getting into and the best way to approach the task.
-              </li>
-              <li>
-                Gain the proper experience in the realm of sheltering and rescueing pets beyond cleaning the kennels and walking the dogs.
-              </li>
-              <li>
-                Develop a team who you trust and know are loyal to the goal of the product. It takes an entrepreneurial spirit to start up an organization.  
-              </li>
-              <li>
-                Visit other shelters. Get to know what methods of implementation work and don't work to create a successful org. 
-              </li>
-              <li>
-                Know <i>what</i> type of shelter you want. Waht animals will you rescue? Just dogs? Cats too? Birds? Bunnies? Specific breeds? This is important to recognize components like 
-                budget, networks, connections, physical space needed, experts needs and other staff.
-              </li>
-              <li>
-                Create a mission statement, a plan and FUND. Running a shelter is a business. Hold events and open up to donations.
-              </li>
-              <li>
-                Toot your horn! Have a GRAND opening to promote and spread the word of your org!
-              </li>
-            </ul>
-          </div>
-  
-          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <p>
-              <span>A Breed-Specific Rescue</span><br>
-              Purebred dog rescue organizations grew out of the concern of “fanciers” of various breeds to find homes for unwanted, abandoned, 
-              stray, mistreated or neglected dogs of those breeds. Breed specific rescue groups are made up of dedicated volunteers 
-              who house, care for and carefully place purebreds in new, hopefully permanent, homes. For prospective dog owners who 
-              are interested in a particular breed, this type of rescue group provides an alternative to breeders or pet shops. 
-              An important plus is that these rescue organizations do not contribute to the companion overpopulation problem.
-            </p>
-            <p>
-                Breed specific rescue groups work hand in hand with and complement the work of animal shelters. Many 
-                shelters maintain a list of breed groups in their area, and when a purebred is received (shelters report 
-                that between 20 percent and 30 percent of dogs received are purebreds), call for assistance with placement. 
-                As purebred rescue groups remove “their” breed from a shelter, they free up a run and buy time for another dog. 
-                Additionally, many rescue groups take dogs who might be considered less adoptable by some shelters, such as 
-                dogs who are older or have special needs.
-            </p>
-          </div>
-  
-          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-              <div style="width: 20rem; border:none;">
-                <a href="#"><img class="card-img-top" src="/beagle.effe4856.jpg" alt="Beagle Pup"></a>
-              </div>
-          </div>
+        <div class="col-md-12 mb-3 mb-md-0" id="results"></div>
+        </div>
+    </section>
+    <!-- END SHELTER API RESULTS --> 
+      
+    <!-- START AN ORG --> 
+    <section class="bg-light about">
+      <div class="container section" id="section-adop-near">
+          <h2 class="heading">Start your own organization</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <p>
+            <span>A Shelter</span><br>
+            <a href="http://www.aspca.org/">ASPCA's National Shelter Outreach</a> has great tips to help you get started!
+          </p>
+          <ul>
+            <li>
+              Ensure there is a gap in community needs. Determine issues in the local animal welfare industry and what goals are being failed to reach. 
+              Would your organization be successful? Would it benefit your community? If there are more than one shelter in your community, would adding another one be an advantage or 
+              disadvantage in your community?
+            </li>
+            <li>
+              Do your research and <i>know exactly</i> what you're getting into and the best way to approach the task.
+            </li>
+            <li>
+              Gain the proper experience in the realm of sheltering and rescueing pets beyond cleaning the kennels and walking the dogs.
+            </li>
+            <li>
+              Develop a team who you trust and know are loyal to the goal of the product. It takes an entrepreneurial spirit to start up an organization.  
+            </li>
+            <li>
+              Visit other shelters. Get to know what methods of implementation work and don't work to create a successful org. 
+            </li>
+            <li>
+              Know <i>what</i> type of shelter you want. Waht animals will you rescue? Just dogs? Cats too? Birds? Bunnies? Specific breeds? This is important to recognize components like 
+              budget, networks, connections, physical space needed, experts needs and other staff.
+            </li>
+            <li>
+              Create a mission statement, a plan and FUND. Running a shelter is a business. Hold events and open up to donations.
+            </li>
+            <li>
+              Toot your horn! Have a GRAND opening to promote and spread the word of your org!
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <p>
+            <span>A Breed-Specific Rescue</span><br>
+            Purebred dog rescue organizations grew out of the concern of “fanciers” of various breeds to find homes for unwanted, abandoned, 
+            stray, mistreated or neglected dogs of those breeds. Breed specific rescue groups are made up of dedicated volunteers 
+            who house, care for and carefully place purebreds in new, hopefully permanent, homes. For prospective dog owners who 
+            are interested in a particular breed, this type of rescue group provides an alternative to breeders or pet shops. 
+            An important plus is that these rescue organizations do not contribute to the companion overpopulation problem.
+          </p>
+          <p>
+              Breed specific rescue groups work hand in hand with and complement the work of animal shelters. Many 
+              shelters maintain a list of breed groups in their area, and when a purebred is received (shelters report 
+              that between 20 percent and 30 percent of dogs received are purebreds), call for assistance with placement. 
+              As purebred rescue groups remove “their” breed from a shelter, they free up a run and buy time for another dog. 
+              Additionally, many rescue groups take dogs who might be considered less adoptable by some shelters, such as 
+              dogs who are older or have special needs.
+          </p>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div style="width: 20rem; border:none;">
+              <img class="card-img-top" src="/beagle.effe4856.jpg" alt="Beagle Pup">
+            </div>
+        </div>
       </div>
     </div>
   </section>
+  <!-- END START ORG --> 
 
+  <!-- ADOPT BAR --> 
   <section class="section bg-image overlay" style="background-image: url('jacalyn-beales-671378-unsplash.9e9b36a5.jpg');">
     <div class="container">
     <div class="row align-items-center">
-        <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">
+        <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left">
         <h2 class="text-white font-weight-bold bottom-font">Give a pet a second chance.</h2>
         </div>
-        <div class="col-12 col-md-6 text-center text-md-right" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-12 col-md-6 text-center text-md-right">
         <a href="/index.html#adopt-form" class="btn btn-outline-white-primary py-3 text-white px-5">ADOPT</a>
         </div>
     </div>
     </div>
   </section>
+  <!-- END ADOPT BAR --> 
 
-      <footer class="section footer-section">
-        <div class="container">
-          <div class="row mb-4">
-            <div class="col-md-3 mb-5">
-              <ul class="list-unstyled link">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Terms &amp; Conditions</a></li>
-                <li><a href="#">FAQs</a></li>
-               <li><a href="#">Press</a></li>
-              </ul>
-            </div>
-            <div class="col-md-3 mb-5">
-              <ul class="list-unstyled link">
-                <li><a href="#">Dogs</a></li>
-                <li><a href="#">Cats</a></li>
-                <li><a href="#">Shelter &amp; Rescue Login</a></li>
-                <li><a href="#">Shelter &amp; Rescue Registration</a></li>
-              </ul>
-            </div>
-            <div class="col-md-6 mb-5">
-              <p>Sign up for our newsletter</p>
-              <form method="POST" action="addto-newsletter.php" class="footer-newsletter">
-                <div class="form-group">
-                  <input type="email" class="form-control" placeholder="Email Address">
-                  <button type="submit" class="btn btn-outline-white-primary py-1 text-white">Sign Up</button>
-                </div>
-              </form>
-            </div>
-          </div>
+  <!-- FOOTER --> 
+  <footer class="section footer-section">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-3 mb-5">
+          <ul class="list-unstyled link">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
         </div>
-      </footer>
+        <div class="col-md-3 mb-5">
+          <ul class="list-unstyled link">
+            <li><a href="#">Dogs</a></li>
+            <li><a href="#">Cats</a></li>
+            <li><a href="#">Shelter &amp; Rescue Login</a></li>
+            <li><a href="#">Shelter &amp; Rescue Registration</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 mb-5">
+          <p>Sign up for our newsletter</p>
+          <form method="POST" action="addto-newsletter.php" class="footer-newsletter">
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email Address">
+              <button type="submit" class="btn btn-outline-white-primary py-1 text-white">Sign Up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- END FOOTER --> 
+
       <script src="/main_shelter.44afcbfa.js"></script>
-      <script>(function ($) {
+      <script>//COLLAPSABLE NAVBAR
+(function ($) {
   'use strict';
 
   $('.site-menu-toggle').click(function () {
