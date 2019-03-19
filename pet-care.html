@@ -14,14 +14,14 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <title>PetFinder API</title>
+    <title>FindingFido</title>
   </head>
     <body>
 
       <!-- NAVIGATION --> 
       <nav class="navbar navbar-expand-lg navbar-dark toggled_navbar">
         <div class="container">
-            <a class="navbar-logo" href="index.html"><span class="text-significant">Pet</span>Seeker</a>
+            <a class="navbar-logo" href="index.html"><span class="text-significant">Finding</span>Fido</a>
             <div class="site-menu-toggle js-site-menu-toggle  ml-auto" data-toggle="collapse" data-target="#hidden-navbar-nav" aria-controls="hidden-navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -62,54 +62,54 @@
       </section>
       <!-- END MAST --> 
 
-      <!-- ADOPT BAR --> 
-      <section class="section bg-image overlay" style="background-image: url('images/jacalyn-beales-671378-unsplash.jpg');">
-        <div class="container" >
-        <div class="row align-items-center">
-            <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left">
-            <h2 class="text-white font-weight-bold bottom-font">Give a pet a second chance.</h2>
-            </div>
-            <div class="col-12 col-md-6 text-center text-md-right">
-            <a href="index.html#adopt-form" class="btn btn-outline-white-primary py-3 text-white px-5">ADOPT</a>
-            </div>
-        </div>
-        </div>
-      </section>
-      <!-- END ADOPT BAR --> 
-
-      <!-- FOOTER --> 
-      <footer class="section footer-section">
-        <div class="container">
-          <div class="row mb-4">
-            <div class="col-md-3 mb-5">
-              <ul class="list-unstyled link">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Terms &amp; Conditions</a></li>
-                <li><a href="#">FAQs</a></li>
-               <li><a href="#">Press</a></li>
-              </ul>
-            </div>
-            <div class="col-md-3 mb-5">
-              <ul class="list-unstyled link">
-                <li><a href="#">Dogs</a></li>
-                <li><a href="#">Cats</a></li>
-                <li><a href="#">Shelter &amp; Rescue Login</a></li>
-                <li><a href="#">Shelter &amp; Rescue Registration</a></li>
-              </ul>
-            </div>
-            <div class="col-md-6 mb-5">
-              <p>Sign up for our newsletter</p>
-              <form method="POST" action="addto-newsletter.php" class="footer-newsletter">
-                <div class="form-group">
-                  <input type="email" class="form-control" placeholder="Email Address">
-                  <button type="submit" class="btn btn-outline-white-primary py-1 text-white">Sign Up</button>
-                </div>
-              </form>
-            </div>
+    <!-- ADOPT BAR --> 
+    <section class="section bg-image overlay" style="background-image: url('images/jacalyn-beales-671378-unsplash.jpg');">
+      <div class="container" >
+      <div class="row align-items-center">
+          <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left">
+          <h2 class="text-white font-weight-bold bottom-font">Give a pet a second chance.</h2>
           </div>
+          <div class="col-12 col-md-6 text-center text-md-right">
+          <a href="index.html#adopt-form" class="btn btn-outline-white-primary py-3 text-white px-5">ADOPT</a>
+          </div>
+      </div>
+      </div>
+    </section>
+    <!-- END ADOPT BAR --> 
+
+  <!-- FOOTER --> 
+  <footer class="section footer-section">
+    <div class="container">
+    <div class="row mb-4">
+        <div class="col-md-3 mb-5">
+        <ul class="list-unstyled link">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="http://newscenter.purina.com" target="_blank">Press</a></li>
+        </ul>
         </div>
-      </footer>
-      <!-- END FOOTER --> 
+        <div class="col-md-3 mb-5">
+        <ul class="list-unstyled link">
+            <li><a href="dog-care.html">Dogs</a></li>
+            <li><a href="cat-care.html">Cats</a></li>
+            <li><a href="#">Shelter &amp; Rescue Login</a></li>
+            <li><a href="#">Shelter &amp; Rescue Registration</a></li>
+        </ul>
+        </div>
+        <div class="col-md-6 mb-5">
+        <p>Sign up for our newsletter</p>
+        <form name="contact" method="POST" data-netlify="true" class="footer-newsletter">
+            <div class="form-group">
+            <input type="email" class="form-control" placeholder="Email Address">
+            <button type="submit" class="btn btn-outline-white-primary py-1 text-white">Sign Up</button>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+</footer>
+<!-- END FOOTER --> 
 
       <script>
         //COLLAPSABLE NAVBAR
