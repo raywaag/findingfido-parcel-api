@@ -39,8 +39,12 @@ function fetchShelters(e) {
 
   // Fetch Animals From API
   function getDog(){
-    $.getJSON("https://dog.ceo/api/breeds/image/random", function( data ) {
-        $(".image-content").html("<img src='" + data.message + "'>");
+    $.getJSON("https://dog.ceo/api/breeds/image/random", 
+    function( data ) {
+      console.log(data.message);
+      var getImage = document.createElement('img');
+      $(getImage).attr('src', data.message);
+      (getImage).append('image-content'); 
     });
   }
   
@@ -63,7 +67,8 @@ function showShelters(shelters) {
     console.log(shelter);
     const div = document.createElement('div');
     div.classList.add('card', 'card-body', 'mb-3');
-    div.innerHTML = `
+    div.innerHTML =
+     `<div class="container">
       <div class="row">
         <div class="col-sm-6">
           <h4>${shelter.name.$t}</h4>
@@ -73,9 +78,10 @@ function showShelters(shelters) {
            </p>
         </div>
         </div>
-        <div  class="image-content" style="width:auto;height:100%;overflow:hidden;">
-        <div class="spinner-border" role="status"></div>
-    ` + getDog();
+        <div class="image-content" style="width:auto;height:100%;overflow:hidden;">
+          <div class="spinner-border" role="status"></div>
+        </div>
+     ` + getDog(); +
     `</div>`;
 
     results.appendChild(div);
