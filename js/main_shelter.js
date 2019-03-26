@@ -41,10 +41,13 @@ function fetchShelters(e) {
   function getDog(){
     $.getJSON("https://dog.ceo/api/breeds/image/random", 
     function( data ) {
-      console.log(data.message);
+      var dataSource = data.message;
+      console.log(dataSource);
+
+      const imageContent = document.querySelector('.image-content');
       var getImage = document.createElement('img');
-      $(getImage).attr('src', data.message);
-      (getImage).append('image-content'); 
+      getImage.src = dataSource;
+      (imageContent).append(getImage); 
     });
   }
   
@@ -81,7 +84,7 @@ function showShelters(shelters) {
         <div class="image-content" style="width:auto;height:100%;overflow:hidden;">
           <div class="spinner-border" role="status"></div>
         </div>
-     ` + getDog(); +
+     ` + getDog();
     `</div>`;
 
     results.appendChild(div);

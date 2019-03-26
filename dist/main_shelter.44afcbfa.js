@@ -317,10 +317,12 @@ function fetchShelters(e) {
 
 function getDog() {
   $.getJSON("https://dog.ceo/api/breeds/image/random", function (data) {
-    console.log(data.message);
+    var dataSource = data.message;
+    console.log(dataSource);
+    var imageContent = document.querySelector('.image-content');
     var getImage = document.createElement('img');
-    $(getImage).attr('src', data.message);
-    getImage.append('image-content');
+    getImage.src = dataSource;
+    imageContent.append(getImage);
   });
 } // Loader
 
@@ -342,7 +344,7 @@ function showShelters(shelters) {
     var div = document.createElement('div');
     div.classList.add('card', 'card-body', 'mb-3');
     div.innerHTML = "<div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-sm-6\">\n          <h4>".concat(shelter.name.$t, "</h4>\n          <p>\n            ").concat(shelter.city.$t, "\n            ").concat(shelter.state.$t, " ").concat(shelter.phone.$t, "\n           </p>\n        </div>\n        </div>\n        <div class=\"image-content\" style=\"width:auto;height:100%;overflow:hidden;\">\n          <div class=\"spinner-border\" role=\"status\"></div>\n        </div>\n     ") + getDog();
-    +"</div>";
+    "</div>";
     results.appendChild(div);
   });
 }
@@ -374,7 +376,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55006" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51268" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
