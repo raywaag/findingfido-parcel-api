@@ -47,18 +47,9 @@ function fetchShelters(e) {
       const imageContent = document.querySelector('.image-content');
       var getImage = document.createElement('img');
       getImage.src = dataSource;
-      (imageContent).append(getImage); 
+      imageContent.append(getImage); 
     });
   }
-  
-  // Loader
-  $(document).ajaxStart(function(){
-    $("#wait").css("display", "block");
-  });
-  $(document).ajaxComplete(function(){
-    $("#wait").css("display", "none");
-  });
-
 
 // Show Listings Of Pets
 function showShelters(shelters) {
@@ -81,11 +72,9 @@ function showShelters(shelters) {
            </p>
         </div>
         </div>
-        <div class="image-content" style="width:auto;height:100%;overflow:hidden;">
-          <div class="spinner-border" role="status"></div>
-        </div>
-     ` + getDog();
-    `</div>`;
+        <div class="image-content" style="width:auto;height:100%;overflow:hidden;"></div>
+      </div>`
+      getDog();
 
     results.appendChild(div);
   });
