@@ -308,37 +308,32 @@ function fetchShelters(e) {
   }).catch(function (err) {
     return console.log(err);
   });
-} // // JSONP Callback
-// function callback(data) {
-//   console.log(data);
-// }
-// Fetch Animals From API
-
-
-function getDog() {
-  $.getJSON("https://dog.ceo/api/breeds/image/random", function (data) {
-    var dataSource = data.message;
-    console.log(dataSource);
-    var imageContent = document.querySelector('.image-content');
-    var getImage = document.createElement('img');
-    getImage.src = dataSource;
-    imageContent.append(getImage);
-  });
 } // Show Listings Of Pets
 
 
 function showShelters(shelters) {
-  var results = document.querySelector('#results'); // Clear First
+  $.getJSON("https://dog.ceo/api/breeds/image/random", function (data) {
+    var results = document.querySelector('#results'); // Clear First
 
-  results.innerHTML = ''; // Loop Through Pets
+    results.innerHTML = ''; // Loop Through Pets
 
-  shelters.forEach(function (shelter) {
-    console.log(shelter);
-    var div = document.createElement('div');
-    div.classList.add('card', 'card-body', 'mb-3');
-    div.innerHTML = "<div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-sm-6\">\n          <h4>".concat(shelter.name.$t, "</h4>\n          <p>\n            ").concat(shelter.city.$t, "\n            ").concat(shelter.state.$t, " ").concat(shelter.phone.$t, "\n           </p>\n        </div>\n        </div>\n        <div class=\"image-content\" style=\"width:auto;height:100%;overflow:hidden;\"></div>\n      </div>");
-    getDog();
-    results.appendChild(div);
+    shelters.forEach(function (shelter) {
+      console.log(shelter);
+      var div = document.createElement('div'); //Get dog images
+
+      var image = document.createElement('img');
+      var dataSource = data.message;
+      image.src = dataSource;
+      $(image).attr('width', '500');
+      $(image).attr('height', 'auto'); //Display to console
+
+      console.log(dataSource); //Div details
+
+      div.classList.add('card', 'card-body', 'mb-3');
+      div.innerHTML = "\n            <div class=\"row\">\n            <div class=\"col-sm-6\">\n            <h4>".concat(shelter.name.$t, "</h4>\n            <p>\n              ").concat(shelter.city.$t, "\n              ").concat(shelter.state.$t, " ").concat(shelter.phone.$t, "\n            </p>\n            </div>\n            </div>");
+      div.append(image);
+      results.appendChild(div);
+    });
   });
 }
 },{"fetch-jsonp":"node_modules/fetch-jsonp/build/fetch-jsonp.js","./validate":"js/validate.js"}],"../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -369,7 +364,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55004" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52914" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
