@@ -117,217 +117,60 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"node_modules/fetch-jsonp/build/fetch-jsonp.js":[function(require,module,exports) {
-var define;
-var global = arguments[3];
-(function (global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module'], factory);
-  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module);
-  } else {
-    var mod = {
-      exports: {}
-    };
-    factory(mod.exports, mod);
-    global.fetchJsonp = mod.exports;
-  }
-})(this, function (exports, module) {
-  'use strict';
+})({"js/main.js":[function(require,module,exports) {
+window.onload = function () {
+  var pets = {};
+  pets.apiKey = "e40853af36fc035106f99b51669391bb";
+  pets.petUrl = "https://api.petfinder.com/pet.find";
+  pets.availablePets = $('#results');
 
-  var defaultOptions = {
-    timeout: 5000,
-    jsonpCallback: 'callback',
-    jsonpCallbackFunction: null
+  pets.form = function () {
+    $('#pet-form').on('submit', function (e) {
+      e.preventDefault();
+      var userLocation = $('#zip').val();
+      var petAge = $('select#age option:checked').val();
+      var petType = $('select#animal option:checked').val();
+      console.log('click');
+      pets.petsCall(userLocation, petAge, petType);
+    });
   };
 
-  function generateCallbackFunction() {
-    return 'jsonp_' + Date.now() + '_' + Math.ceil(Math.random() * 100000);
-  }
-
-  function clearFunction(functionName) {
-    // IE8 throws an exception when you try to delete a property on window
-    // http://stackoverflow.com/a/1824228/751089
-    try {
-      delete window[functionName];
-    } catch (e) {
-      window[functionName] = undefined;
-    }
-  }
-
-  function removeScript(scriptId) {
-    var script = document.getElementById(scriptId);
-    if (script) {
-      document.getElementsByTagName('head')[0].removeChild(script);
-    }
-  }
-
-  function fetchJsonp(_url) {
-    var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-
-    // to avoid param reassign
-    var url = _url;
-    var timeout = options.timeout || defaultOptions.timeout;
-    var jsonpCallback = options.jsonpCallback || defaultOptions.jsonpCallback;
-
-    var timeoutId = undefined;
-
-    return new Promise(function (resolve, reject) {
-      var callbackFunction = options.jsonpCallbackFunction || generateCallbackFunction();
-      var scriptId = jsonpCallback + '_' + callbackFunction;
-
-      window[callbackFunction] = function (response) {
-        resolve({
-          ok: true,
-          // keep consistent with fetch API
-          json: function json() {
-            return Promise.resolve(response);
-          }
-        });
-
-        if (timeoutId) clearTimeout(timeoutId);
-
-        removeScript(scriptId);
-
-        clearFunction(callbackFunction);
-      };
-
-      // Check if the user set their own params, and if not add a ? to start a list of params
-      url += url.indexOf('?') === -1 ? '?' : '&';
-
-      var jsonpScript = document.createElement('script');
-      jsonpScript.setAttribute('src', '' + url + jsonpCallback + '=' + callbackFunction);
-      if (options.charset) {
-        jsonpScript.setAttribute('charset', options.charset);
+  pets.petsCall = function (userLocation, petAge, petType) {
+    console.log(userLocation, petAge, petType);
+    $.ajax({
+      url: pets.petUrl,
+      method: 'GET',
+      crossDomain: true,
+      dataType: 'jsonp',
+      data: {
+        key: pets.apiKey,
+        location: userLocation,
+        animal: petType,
+        format: 'json',
+        count: 10,
+        age: petAge,
+        status: 'A'
       }
-      jsonpScript.id = scriptId;
-      document.getElementsByTagName('head')[0].appendChild(jsonpScript);
+    }).then(function (results) {
+      var petResults = results.petfinder.pets.pet;
+      console.log(petResults);
 
-      timeoutId = setTimeout(function () {
-        reject(new Error('JSONP request to ' + _url + ' timed out'));
-
-        clearFunction(callbackFunction);
-        removeScript(scriptId);
-        window[callbackFunction] = function () {
-          clearFunction(callbackFunction);
-        };
-      }, timeout);
-
-      // Caught if got 404/500
-      jsonpScript.onerror = function () {
-        reject(new Error('JSONP request to ' + _url + ' failed'));
-
-        clearFunction(callbackFunction);
-        removeScript(scriptId);
-        if (timeoutId) clearTimeout(timeoutId);
-      };
+      for (var i = 0; i < petResults.length; ++i) {
+        var petName = petResults[i].name.$t;
+        var petPhoto = petResults[i].media.photos.photo[0].$t;
+        var petDescription = petResults[i].description.$t;
+        console.log(petName);
+        console.log(petPhoto);
+        pets.availablePets.append('<div class="card card-body" style="margin:10px;"> <p class="font-weight-bold text-dark text-center">' + petName + '</p> <br /> <p class="text-center">' + petDescription + '</p> <br /> <div class="text-center"><img style="width:200px;height:auto;" src="' + petPhoto + '"></div> </div>');
+      }
     });
-  }
+  };
 
-  // export as global function
-  /*
-  let local;
-  if (typeof global !== 'undefined') {
-    local = global;
-  } else if (typeof self !== 'undefined') {
-    local = self;
-  } else {
-    try {
-      local = Function('return this')();
-    } catch (e) {
-      throw new Error('polyfill failed because global object is unavailable in this environment');
-    }
-  }
-  local.fetchJsonp = fetchJsonp;
-  */
-
-  module.exports = fetchJsonp;
-});
-},{}],"js/validate.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isValidZip = isValidZip;
-exports.showAlert = showAlert;
-
-// Validate Zipcode
-function isValidZip(zip) {
-  return /^\d{5}(-\d{4})?$/.test(zip);
-} // Display Alert Message
-
-
-function showAlert(message, className) {
-  // Create div
-  var div = document.createElement('div'); // Add Classes
-
-  div.className = "alert alert-".concat(className); // Add Text
-
-  div.appendChild(document.createTextNode(message)); // Get Container
-
-  var container = document.querySelector('.container'); // Get Form
-
-  var form = document.querySelector('#pet-form'); // Insert Alert
-
-  container.insertBefore(div, form);
-  setTimeout(function () {
-    return document.querySelector('.alert').remove();
-  }, 3000);
-}
-},{}],"js/main.js":[function(require,module,exports) {
-"use strict";
-
-var _fetchJsonp = _interopRequireDefault(require("fetch-jsonp"));
-
-var _validate = require("./validate");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var petForm = document.querySelector('#pet-form');
-petForm.addEventListener('submit', fetchAnimals); // Fetch Animals From API
-
-function fetchAnimals(e) {
-  e.preventDefault(); // Get User Input
-
-  var animal = document.querySelector('#animal').value;
-  var age = document.querySelector('#age').value;
-  var zip = document.querySelector('#zip').value; // Validate Zip
-
-  if (!(0, _validate.isValidZip)(zip)) {
-    (0, _validate.showAlert)('Please Enter A Valid Zipcode', 'danger');
-    return;
-  } // Fetch Pets
-
-
-  (0, _fetchJsonp.default)("https://api.petfinder.com/pet.find?format=json&key=e40853af36fc035106f99b51669391bb&animal=".concat(animal, "&age=").concat(age, "&location=").concat(zip, "&callback=callback"), {
-    jsonpCallbackFunction: 'callback'
-  }).then(function (res) {
-    return res.json();
-  }).then(function (data) {
-    return showAnimals(data.petfinder.pets.pet);
-  }).catch(function (err) {
-    return console.log(err);
+  $(document).ready(function () {
+    pets.form();
   });
-} // Show Listings Of Pets
-
-
-function showAnimals(pets) {
-  var results = document.querySelector('#results'); // Clear First
-
-  results.innerHTML = ''; // Loop Through Pets
-
-  pets.forEach(function (pet) {
-    console.log(pet);
-    var div = document.createElement('div');
-    div.classList.add('card', 'card-body', 'mb-3');
-    div.innerHTML = "\n      <div class=\"col-md-12\">\n        <div>\n          <h4>".concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n          <p class=\"text-secondary\">").concat(pet.breeds.breed.$t, "</p>\n          <p>").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</p>\n        </div>\n        <div class=\"col-sm-6\">\n          <a target=\"_blank\" href=\"https://www.petfinder.com/petdetail/ + ").concat(pet.id.$t, "\"><img class=\"img-fluid\" src=\"").concat(pet.media.photos.photo[3].$t, "\"></a>\n        </div>\n      </div>");
-    results.appendChild(div);
-  });
-}
-
-;
-},{"fetch-jsonp":"node_modules/fetch-jsonp/build/fetch-jsonp.js","./validate":"js/validate.js"}],"../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+};
+},{}],"../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -355,7 +198,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52914" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64190" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

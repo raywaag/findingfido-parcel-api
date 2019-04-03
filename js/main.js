@@ -1,63 +1,59 @@
-import fetchJsonp from 'fetch-jsonp';
-import { isValidZip, showAlert } from './validate';
-
-const petForm = document.querySelector('#pet-form');
-
-petForm.addEventListener('submit', fetchAnimals);
-
-// Fetch Animals From API
-function fetchAnimals(e) {
-  e.preventDefault();
-
-  // Get User Input
-  const animal = document.querySelector('#animal').value;
-  const age = document.querySelector('#age').value;
-  const zip = document.querySelector('#zip').value;
-
+window.onload = function() {
   
-  // Validate Zip
-  if (!isValidZip(zip)) {
-    showAlert('Please Enter A Valid Zipcode', 'danger');
-    return;
+  
+  var pets = {};
+
+  pets.apiKey ="e40853af36fc035106f99b51669391bb";
+  pets.petUrl = "https://api.petfinder.com/pet.find";
+  pets.availablePets = $('#results');
+
+  pets.form = function() {
+      $('#pet-form').on('submit', function(e){
+          e.preventDefault();
+          var userLocation = $('#zip').val();
+          var petAge = $('select#age option:checked').val();
+          var petType = $('select#animal option:checked').val();
+          console.log('click');
+          pets.petsCall(userLocation, petAge, petType);
+      });
   }
 
-  // Fetch Pets
-  fetchJsonp(
-    `https://api.petfinder.com/pet.find?format=json&key=e40853af36fc035106f99b51669391bb&animal=${animal}&age=${age}&location=${zip}&callback=callback`,
-    {
-      jsonpCallbackFunction: 'callback'
-    }
-  )
-    .then(res => res.json())
-    .then(data => showAnimals(data.petfinder.pets.pet))
-    .catch(err => console.log(err));
-}
+  pets.petsCall = function(userLocation, petAge, petType) {
+      console.log(userLocation, petAge, petType);
+      $.ajax({
+          url: pets.petUrl,
+          method: 'GET',
+      crossDomain: true,
+          dataType: 'jsonp',
+          data : {
+              key: pets.apiKey,
+              location: userLocation,
+              animal: petType,
+              format: 'json',
+              count: 10,
+              age: petAge,
+              status: 'A'
+          }  
+      }).then(function(results){
+      var petResults = results.petfinder.pets.pet;
+      console.log(petResults);
 
+          for (var i = 0; i < petResults.length; ++i) {
+              var petName = petResults[i].name.$t;
+              var petPhoto = petResults[i].media.photos.photo[0].$t;
+              var petDescription = petResults[i].description.$t;
+              console.log(petName);
+              console.log(petPhoto);
+              
+              pets.availablePets.append(
+                  '<div class="card card-body" style="margin:10px;"> <p class="font-weight-bold text-dark text-center">' + petName + '</p> <br /> <p class="text-center">' + petDescription + '</p> <br /> <div class="text-center"><img style="width:200px;height:auto;" src="' + petPhoto + '"></div> </div>'
+              );
 
-// Show Listings Of Pets
-function showAnimals(pets) {
-  const results = document.querySelector('#results');
-  // Clear First
-  results.innerHTML = '';
-  // Loop Through Pets
-  pets.forEach(pet => {
-    console.log(pet);
-    const div = document.createElement('div');
-    div.classList.add('card', 'card-body', 'mb-3');
-    div.innerHTML = `
-      <div class="col-md-12">
-        <div>
-          <h4>${pet.name.$t} (${pet.age.$t})</h4>
-          <p class="text-secondary">${pet.breeds.breed.$t}</p>
-          <p>${pet.contact.city.$t} ${
-            pet.contact.state.$t
-          } ${pet.contact.zip.$t}</p>
-        </div>
-        <div class="col-sm-6">
-          <a target="_blank" href="https://www.petfinder.com/petdetail/ + ${pet.id.$t}"><img class="img-fluid" src="${pet.media.photos.photo[3].$t}"></a>
-        </div>
-      </div>`;
+          }
+      });
+  };
 
-    results.appendChild(div);
+  $(document).ready(function() {
+      pets.form();
   });
-};
+}
