@@ -1,26 +1,19 @@
 import fetchJsonp from 'fetch-jsonp';
-import { isValidZip, showAlert } from './validate';
 
 const shelterForm = document.querySelector('#shelter-form');
 
 shelterForm.addEventListener('submit', fetchShelters);
 
-// Fetch Shelters From API
+// fetch shelters From petfinder api
 function fetchShelters(e) {
   e.preventDefault();
 
-  // Get User Input
+  // get zip & name
   const name = document.querySelector('#name').value;
   const zip = document.querySelector('#zip').value;
 
-  
-  // Validate Zip
-  if (!isValidZip(zip)) {
-    showAlert('Please Enter A Valid Zipcode', 'danger');
-    return;
-  }
 
-// Fetch Pets
+// fetch shelters
 fetchJsonp(
   `https://api.petfinder.com/shelter.find?format=json&key=e40853af36fc035106f99b51669391bb&name=${name}&location=${zip}&callback=callback`,
   {
@@ -33,31 +26,31 @@ fetchJsonp(
   }
   
 
-  // Show Listings Of Pets
+  // show shelter results
   function showShelters(shelters) {
     $.getJSON("https://dog.ceo/api/breeds/image/random",
       function ( data ) {
 
       const results = document.querySelector('#results');
-        // Clear First
+        // clear #results when a new zip is submitted
         results.innerHTML = '';
 
-        // Loop Through Pets
+        // loop through shelters
         shelters.forEach(shelter => {
           console.log(shelter);
           const div = document.createElement('div');
 
-          //Get dog images
+          // get dog images
           const image = document.createElement('img');
           var dataSource = data.message;
           image.src = dataSource;
           $(image).attr('width', '500');
           $(image).attr('height', 'auto');
 
-          //Display to console
+          // display dog images to console
           console.log(dataSource);
 
-          //Div details
+          // div to display data
           div.classList.add('card', 'card-body', 'mb-3');
           div.innerHTML = `
             <div class="row">

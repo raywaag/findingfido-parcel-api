@@ -243,61 +243,21 @@ var global = arguments[3];
 
   module.exports = fetchJsonp;
 });
-},{}],"js/validate.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isValidZip = isValidZip;
-exports.showAlert = showAlert;
-
-// Validate Zipcode
-function isValidZip(zip) {
-  return /^\d{5}(-\d{4})?$/.test(zip);
-} // Display Alert Message
-
-
-function showAlert(message, className) {
-  // Create div
-  var div = document.createElement('div'); // Add Classes
-
-  div.className = "alert alert-".concat(className); // Add Text
-
-  div.appendChild(document.createTextNode(message)); // Get Container
-
-  var container = document.querySelector('.container'); // Get Form
-
-  var form = document.querySelector('#pet-form'); // Insert Alert
-
-  container.insertBefore(div, form);
-  setTimeout(function () {
-    return document.querySelector('.alert').remove();
-  }, 3000);
-}
 },{}],"js/main_shelter.js":[function(require,module,exports) {
 "use strict";
 
 var _fetchJsonp = _interopRequireDefault(require("fetch-jsonp"));
 
-var _validate = require("./validate");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var shelterForm = document.querySelector('#shelter-form');
-shelterForm.addEventListener('submit', fetchShelters); // Fetch Shelters From API
+shelterForm.addEventListener('submit', fetchShelters); // fetch shelters From petfinder api
 
 function fetchShelters(e) {
-  e.preventDefault(); // Get User Input
+  e.preventDefault(); // get zip & name
 
   var name = document.querySelector('#name').value;
-  var zip = document.querySelector('#zip').value; // Validate Zip
-
-  if (!(0, _validate.isValidZip)(zip)) {
-    (0, _validate.showAlert)('Please Enter A Valid Zipcode', 'danger');
-    return;
-  } // Fetch Pets
-
+  var zip = document.querySelector('#zip').value; // fetch shelters
 
   (0, _fetchJsonp.default)("https://api.petfinder.com/shelter.find?format=json&key=e40853af36fc035106f99b51669391bb&name=".concat(name, "&location=").concat(zip, "&callback=callback"), {
     jsonpCallbackFunction: 'callback'
@@ -308,26 +268,26 @@ function fetchShelters(e) {
   }).catch(function (err) {
     return console.log(err);
   });
-} // Show Listings Of Pets
+} // show shelter results
 
 
 function showShelters(shelters) {
   $.getJSON("https://dog.ceo/api/breeds/image/random", function (data) {
-    var results = document.querySelector('#results'); // Clear First
+    var results = document.querySelector('#results'); // clear #results when a new zip is submitted
 
-    results.innerHTML = ''; // Loop Through Pets
+    results.innerHTML = ''; // loop through shelters
 
     shelters.forEach(function (shelter) {
       console.log(shelter);
-      var div = document.createElement('div'); //Get dog images
+      var div = document.createElement('div'); // get dog images
 
       var image = document.createElement('img');
       var dataSource = data.message;
       image.src = dataSource;
       $(image).attr('width', '500');
-      $(image).attr('height', 'auto'); //Display to console
+      $(image).attr('height', 'auto'); // display dog images to console
 
-      console.log(dataSource); //Div details
+      console.log(dataSource); // div to display data
 
       div.classList.add('card', 'card-body', 'mb-3');
       div.innerHTML = "\n            <div class=\"row\">\n            <div class=\"col-sm-6\">\n            <h4>".concat(shelter.name.$t, "</h4>\n            <p>\n              ").concat(shelter.city.$t, "\n              ").concat(shelter.state.$t, " ").concat(shelter.phone.$t, "\n            </p>\n            </div>\n            </div>");
@@ -336,7 +296,7 @@ function showShelters(shelters) {
     });
   });
 }
-},{"fetch-jsonp":"node_modules/fetch-jsonp/build/fetch-jsonp.js","./validate":"js/validate.js"}],"../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"fetch-jsonp":"node_modules/fetch-jsonp/build/fetch-jsonp.js"}],"../../../.nvm/versions/node/v11.10.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -364,7 +324,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64190" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60473" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
